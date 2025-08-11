@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>RealView.js Video Wall</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">
+          <span class="logo">📺</span>
+          RealView.js Video Wall
+        </h1>
+        <p class="subtitle">Multi-stream video wall with real-time H.264 streaming</p>
+      </header>
+
+      <main class="main-content">
+        <!-- Video Wall Container -->
+        <div class="video-wall-container" id="videoWallContainer">
+          <!-- Video cells will be dynamically generated -->
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+          <div class="control-section">
+            <h3 class="control-title">Video Wall Controls</h3>
+            
+            <!-- Stream Count Slider -->
+            <div class="slider-control">
+              <label for="streamCountSlider" class="slider-label">
+                Stream Count: <span id="streamCountValue">4</span>
+              </label>
+              <input 
+                type="range" 
+                id="streamCountSlider" 
+                min="1" 
+                max="64" 
+                value="4" 
+                class="slider"
+              >
+            </div>
+
+            <!-- Playback Controls -->
+            <div class="playback-controls">
+              <button class="btn btn-primary" id="playAllBtn">
+                <span class="btn-icon">▶</span>
+                Play All
+              </button>
+              <button class="btn btn-secondary" id="pauseAllBtn">
+                <span class="btn-icon">⏸</span>
+                Pause All
+              </button>
+              <button class="btn btn-danger" id="stopAllBtn">
+                <span class="btn-icon">⏹</span>
+                Stop All
+              </button>
+            </div>
+
+            <!-- Layout Controls -->
+            <div class="layout-controls">
+              <button class="btn btn-outline" id="fullscreenBtn">
+                <span class="btn-icon">🔍</span>
+                Fullscreen
+              </button>
+              <button class="btn btn-outline" id="resetLayoutBtn">
+                <span class="btn-icon">🔄</span>
+                Reset Layout
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistics -->
+          <div class="stats-section">
+            <h3 class="stats-title">Wall Statistics</h3>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon">📺</div>
+                <div class="stat-content">
+                  <div class="stat-label">Active Streams</div>
+                  <div class="stat-value" id="activeStreams">0</div>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-content">
+                  <div class="stat-label">Avg FPS</div>
+                  <div class="stat-value" id="avgFps">0</div>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-content">
+                  <div class="stat-label">Total Data</div>
+                  <div class="stat-value" id="totalData">0 MB</div>
+                </div>
+              </div>
+              
+              <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                  <div class="stat-label">Total Frames</div>
+                  <div class="stat-value" id="totalFrames">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connection Status -->
+        <div class="connection-status">
+          <div class="status-indicator" id="statusIndicator">
+            <span class="status-dot"></span>
+            <span class="status-text" id="statusText">Disconnected</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <realview-video-wall></realview-video-wall>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

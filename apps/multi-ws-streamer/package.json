@@ -1,0 +1,71 @@
+{
+  "name": "@realview/multi-ws-streamer",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "apps/multi-ws-streamer/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "apps/multi-ws-streamer/src/main.ts",
+          "tsConfig": "apps/multi-ws-streamer/tsconfig.app.json",
+          "assets": [
+            "apps/multi-ws-streamer/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@realview/multi-ws-streamer:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@realview/multi-ws-streamer:build:development"
+          },
+          "production": {
+            "buildTarget": "@realview/multi-ws-streamer:build:production"
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    }
+  }
+}

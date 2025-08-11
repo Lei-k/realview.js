@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>RealView Video Wall - Path-based Streaming</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .examples {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .example-link {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    
+    .example-link:hover {
+      background: #0056b3;
+    }
+    
+    .current-path {
+      background: #e9ecef;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      margin: 10px 0;
+    }
+    
+    .video-wall-container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>RealView Video Wall - Path-based Streaming</h1>
+      <p>This demo shows how to use URL paths to specify which video stream to play.</p>
+      
+      <div class="current-path">
+        <strong>Current Path:</strong> <span id="currentPath"></span>
+      </div>
+    </div>
+    
+    <div class="examples">
+      <h2>Try Different Video Streams</h2>
+      <p>Click on any link below to stream a specific video:</p>
+      
+      <a href="/" class="example-link">Default (Multiple Videos)</a>
+      <a href="/big-buck-bunny" class="example-link">Big Buck Bunny</a>
+      <a href="/elephants-dream" class="example-link">Elephant Dream</a>
+      <a href="/sintel" class="example-link">Sintel</a>
+      <a href="/tears-of-steel" class="example-link">Tears of Steel</a>
+      <a href="/for-bigger-blazes" class="example-link">For Bigger Blazes</a>
+      <a href="/for-bigger-escapes" class="example-link">For Bigger Escapes</a>
+      <a href="/for-bigger-fun" class="example-link">For Bigger Fun</a>
+      <a href="/for-bigger-joyrides" class="example-link">For Bigger Joyrides</a>
+      <a href="/for-bigger-meltdowns" class="example-link">For Bigger Meltdowns</a>
+      <a href="/subaru-outback" class="example-link">Subaru Outback</a>
+      <a href="/volkswagen-gti-review" class="example-link">Volkswagen GTI Review</a>
+      <a href="/we-are-going-on-bullrun" class="example-link">We Are Going On Bullrun</a>
+      <a href="/what-care-can-you-get-for-a-grand" class="example-link">What Care Can You Get For A Grand</a>
+    </div>
+    
+    <div class="video-wall-container">
+      <realview-video-wall></realview-video-wall>
+    </div>
+  </div>
+  
+  <script>
+    // Update current path display
+    document.getElementById('currentPath').textContent = window.location.pathname || '/';
+    
+    // Add click handlers for example links
+    document.querySelectorAll('.example-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    });
+  </script>
+  
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html> 

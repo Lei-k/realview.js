@@ -1,0 +1,10 @@
+{
+  "name": "@realview/vanilla-js-demo-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@realview/vanilla-js-demo"
+    ]
+  }
+}

@@ -2,5 +2,39 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./apps/vanilla-js-demo-e2e"
+    },
+    {
+      "path": "./apps/vanilla-js-demo"
+    },
+    {
+      "path": "./apps/vanilla-js-demo-e2e"
+    },
+    {
+      "path": "./apps/ws-streamer-e2e"
+    },
+    {
+      "path": "./apps/ws-streamer"
+    },
+    {
+      "path": "./apps/react-demo"
+    },
+    {
+      "path": "./apps/multi-ws-streamer-e2e"
+    },
+    {
+      "path": "./apps/multi-ws-streamer"
+    },
+    {
+      "path": "./apps/vanilla-js-video-wall-e2e"
+    },
+    {
+      "path": "./apps/vanilla-js-video-wall"
+    }
+  ]
 }

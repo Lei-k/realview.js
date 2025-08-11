@@ -1,0 +1,56 @@
+{
+  "name": "realview.js",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "RealView.js - High-performance video decoder for the browser",
+  "keywords": [
+    "video",
+    "decoder",
+    "streaming",
+    "mpeg-ts",
+    "demuxer",
+    "websocket",
+    "realview",
+    "webcodecs"
+  ],
+  "author": "RealView.js Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/realview.js.git"
+  },
+  "homepage": "https://github.com/your-org/realview.js#readme",
+  "bugs": {
+    "url": "https://github.com/your-org/realview.js/issues"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

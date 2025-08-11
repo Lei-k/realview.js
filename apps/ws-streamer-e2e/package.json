@@ -1,0 +1,26 @@
+{
+  "name": "@realview/ws-streamer-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@realview/ws-streamer"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/ws-streamer-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@realview/ws-streamer:build",
+          "@realview/ws-streamer:serve"
+        ]
+      }
+    }
+  }
+}

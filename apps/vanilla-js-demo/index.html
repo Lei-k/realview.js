@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>RealView.js Demo</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">
+          <span class="logo">🎬</span>
+          RealView.js
+        </h1>
+        <p class="subtitle">Real-time H.264 streaming with WebCodecs</p>
+      </header>
+
+      <main class="main-content">
+        <div id="video-container" class="video-container">
+          <canvas id="video" width="1280" height="720" class="video-canvas">
+            <p class="fallback-text">Your browser doesn't support canvas video playback.</p>
+          </canvas>
+          
+          <div class="video-overlay">
+            <div class="play-button" id="playButton">
+              <span class="play-icon">▶</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <button class="btn btn-primary" id="playBtn">
+              <span class="btn-icon">▶</span>
+              Play
+            </button>
+            <button class="btn btn-secondary" id="pauseBtn">
+              <span class="btn-icon">⏸</span>
+              Pause
+            </button>
+            <button class="btn btn-danger" id="stopBtn">
+              <span class="btn-icon">⏹</span>
+              Stop
+            </button>
+
+            <button class="btn btn-primary" id="fullscreenBtn">
+              <span class="btn-icon">🔍</span>
+              Fullscreen
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-container">
+          <h3 class="stats-title">Stream Statistics</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-content">
+                <div class="stat-label">FPS</div>
+                <div class="stat-value" id="fps">0</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-content">
+                <div class="stat-label">Latency</div>
+                <div class="stat-value" id="latency">0ms</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">📦</div>
+              <div class="stat-content">
+                <div class="stat-label">Data Received</div>
+                <div class="stat-value" id="bytesReceived">0 KB</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-content">
+                <div class="stat-label">Frames</div>
+                <div class="stat-value" id="frameCount">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="connection-status">
+          <div class="status-indicator" id="statusIndicator">
+            <span class="status-dot"></span>
+            <span class="status-text" id="statusText">Disconnected</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <realview-root></realview-root>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

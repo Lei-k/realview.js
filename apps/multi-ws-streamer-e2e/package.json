@@ -1,0 +1,26 @@
+{
+  "name": "@realview/multi-ws-streamer-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@realview/multi-ws-streamer"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/multi-ws-streamer-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@realview/multi-ws-streamer:build",
+          "@realview/multi-ws-streamer:serve"
+        ]
+      }
+    }
+  }
+}
