@@ -1,4 +1,4 @@
-import { Bitstream, SPSInfo } from "./spsparser";
+import { Bitstream, SPSInfo } from "./spsparser/index";
 
 export type { SPSInfo };
 

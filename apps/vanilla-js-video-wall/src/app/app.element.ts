@@ -1,5 +1,5 @@
 import './app.element.css';
-import { Player } from '@realview/core';
+import { Player } from 'realview.js';
 
 interface Video {
   id: string;

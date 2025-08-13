@@ -32,10 +32,6 @@
     "README.md",
     "LICENSE"
   ],
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

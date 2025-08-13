@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Player } from '@realview/core';
+import { Player } from 'realview.js';
 
 interface PlayerStats {
   fps: number;

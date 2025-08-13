@@ -1,5 +1,5 @@
 import './app.element.css';
-import { Player } from '@realview/core';
+import { Player } from 'realview.js';
 
 export class AppElement extends HTMLElement {
   private player: Player | null = null;
