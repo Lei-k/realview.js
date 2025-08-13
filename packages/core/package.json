@@ -1,6 +1,6 @@
 {
   "name": "realview.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -17,13 +17,13 @@
     "realview",
     "webcodecs"
   ],
-  "author": "RealView.js Team",
+  "author": "Lei-k",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/realview.js.git"
+    "url": "https://github.com/Lei-k/realview.js"
   },
-  "homepage": "https://github.com/your-org/realview.js#readme",
+  "homepage": "https://github.com/Lei-k/realview.js",
   "bugs": {
     "url": "https://github.com/your-org/realview.js/issues"
   },
