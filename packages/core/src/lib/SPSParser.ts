@@ -23,7 +23,7 @@ function ExpGolomInit(
   return { zeros, skip, byt, byteoffset };
 }
 
-export class Bitstream {
+class Bitstream {
   public bitoffset = 0;
   constructor(public view: DataView) {}
 
