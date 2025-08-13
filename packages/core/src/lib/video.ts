@@ -107,7 +107,7 @@ export class VideoStream {
     this.last_packet = next;
   }
 
-  getTrack(): VideoTrack {
+  getTrack(): VideoTrack | null {
     const {
       frame_count,
       frame_sum,
@@ -120,6 +120,10 @@ export class VideoStream {
     } = this;
     const frame_rate = Math.round(frame_sum / frame_count);
     const duration = this.duration + zeroes * frame_rate;
+
+    if(!sps) {
+      return null;
+    }
 
     const spsInfo = parseSPS(sps);
     const cropping = spsInfo.frame_cropping;

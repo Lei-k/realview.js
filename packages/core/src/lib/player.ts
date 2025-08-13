@@ -342,7 +342,13 @@ export class Player extends EventTarget {
   private processVideoTrack() {
     if (!this.videoTrack || !this.isDecoderConfigured) return;
 
-    const { samples, data } = this.videoStream.getTrack();
+    const track = this.videoStream.getTrack();
+
+    if(!track) {
+      return;
+    }
+
+    const { samples, data } = track;
 
     // Process all samples for real-time streaming
     for (let i = 0; i < samples.length; i++) {
@@ -534,6 +540,9 @@ export class Player extends EventTarget {
     // Check if we have enough data to get a complete video track
     if (this.videoStream.byteLength > 0 && !this.videoTrack) {
       this.videoTrack = this.videoStream.getTrack();
+      if(!this.videoTrack) {
+        return;
+      }
       this.configureDecoder();
     }
 
