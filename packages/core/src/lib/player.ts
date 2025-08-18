@@ -14,8 +14,6 @@ function setupCanvas(canvas: HTMLCanvasElement) {
     throw new Error("Failed to get 2d context");
   }
 
-  console.log("dpr", dpr);
-
   ctx.scale(dpr, dpr);
 }
 
@@ -267,6 +265,8 @@ export class Player extends EventTarget {
 
     const { sps, pps, width, height, duration } = this.videoTrack;
 
+    console.log(this.videoTrack)
+
     this.fps = 90000 / duration;
 
     this.videoWidth = width;
@@ -287,8 +287,6 @@ export class Player extends EventTarget {
     this.videoDecoder.configure(config);
     this.isDecoderConfigured = true;
     this.hasSeenKeyFrame = false; // Reset key frame flag when reconfiguring
-
-    this.startRendering();
   }
 
   private createCodecDescription(sps: Uint8Array, pps: Uint8Array): Uint8Array {
@@ -337,6 +335,15 @@ export class Player extends EventTarget {
         this.renderFrame(frame);
       }
     }, 1000 / this.fps);
+  }
+
+  private stopRendering() {
+    if(!this.renderLoop) {
+      return;
+    }
+
+    clearInterval(this.renderLoop);
+    this.renderLoop = null;
   }
 
   private processVideoTrack() {
@@ -493,7 +500,10 @@ export class Player extends EventTarget {
       return;
     }
 
-    this.state = PlayerState.Playing;    
+    this.state = PlayerState.Playing;  
+    
+    this.demuxer = new TSDemuxer(this.onPacket.bind(this));
+    this.videoStream = new VideoStream();
 
     // Create WebSocket connection
     this.ws = new WebSocket(this.url);
@@ -531,6 +541,8 @@ export class Player extends EventTarget {
     this.ws.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
+
+    this.startRendering();
   }
 
   private processData(data: Uint8Array) {
@@ -567,9 +579,13 @@ export class Player extends EventTarget {
     this.frameCount = 0;
     this.latency = 0;
     this.lastFrameTime = 0;
+
+    this.stopRendering();
   }
 
   public destroy() {
+    this.state = PlayerState.Stopped;
+
     this.ws?.close();
     this.videoDecoder.close();
     this.isDecoderConfigured = false;
@@ -578,6 +594,8 @@ export class Player extends EventTarget {
     this.frameCount = 0;
     this.latency = 0;
     this.lastFrameTime = 0;
+
+    this.stopRendering();
   }
 
   public getStats() {
