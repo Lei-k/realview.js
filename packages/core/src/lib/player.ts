@@ -484,7 +484,7 @@ export class Player extends EventTarget {
     // Clear canvas
     //ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     // Draw frame stretched to fit canvas exactly
-    ctx!.drawImage(frame, 0, 0, this.width, this.height);
+    ctx!.drawImage(frame, 0, 0, this.videoWidth, this.videoHeight);
   }
 
   public play() {
@@ -628,7 +628,10 @@ export class Player extends EventTarget {
       this.gl?.viewport(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    this.ctx?.scale(this.pixelRatio, this.pixelRatio);
+    const widthRatio = this.pixelRatio * this.width / this.videoWidth;
+    const heightRatio = this.pixelRatio * this.height / this.videoHeight;
+
+    this.ctx?.scale(widthRatio, heightRatio);
   }
 
   public fullscreen() {
