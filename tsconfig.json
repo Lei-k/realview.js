@@ -13,9 +13,6 @@
       "path": "./apps/vanilla-js-demo"
     },
     {
-      "path": "./apps/vanilla-js-demo-e2e"
-    },
-    {
       "path": "./apps/ws-streamer-e2e"
     },
     {
@@ -35,6 +32,9 @@
     },
     {
       "path": "./apps/vanilla-js-video-wall"
+    },
+    {
+      "path": "./apps/svelte-demo"
     }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "extends": "@tsconfig/svelte/tsconfig.json",
+
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
+    "lib": ["dom", "dom.iterable", "es2020"]
+  },
+  "exclude": [],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.svelte",
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "src/**/*.html"
+  ],
+  "references": []
+}
